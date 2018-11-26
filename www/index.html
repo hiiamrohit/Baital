@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<title>बेताल पच्चीसी की कहानियाँ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/w3.css">
+<link rel="stylesheet" href="css/w3-theme-teal.css">
+<script src="js/jquery.min.js"></script>
+<body style="max-width:1000px">
+
+<nav class="w3-sidebar w3-bar-block w3-card" id="mySidebar">
+
+</nav>
+
+<header class="w3-bar w3-card w3-theme">
+ 
+</header>
+
+<div class="w3-container">
+ <br/>
+ <div id="content"></div>
+</div>
+
+<footer class="w3-container w3-theme w3-margin-top">
+  
+</footer>
+
+<script>
+closeSidebar();
+function openSidebar() {
+    document.getElementById("mySidebar").style.display = "block";
+}
+function closeSidebar() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
+<script>
+$(function(){
+  $("nav").load("side-panel.html");
+  $("header").load("header.html");
+  $("footer").load("footer.html");
+  $("#content").load("home.html");
+
+  // load indivisual page
+  $( "body" ).on( "click", ".detail",function() {
+     var pageName = $(this).attr('pageName');
+     var title = $(this).find('.title').html();
+     $("#content").load(pageName, function() {
+       $("#mainMenu").css("display","none");
+       $("#backBtn").show();
+       $('html,body').scrollTop(0);
+     });
+     //$("#mainTitle").hide();
+     //$("#contentTitle").show();
+     //$("#contentTitle").html(title);
+  });
+
+  // back button code
+  $( "body" ).on( "click", "#backBtn",function() {
+     $("#content").load("home.html");
+     $("#mainMenu").show();
+     $("#backBtn").hide();
+     //$("#contentTitle").hide();
+     //$("#mainTitle").show();
+  });
+
+  // home link
+  $( "body" ).on( "click", ".home",function() {
+     var pageName = $(this).attr('pageName'); 
+     $("#content").load(pageName, function() {
+       $('html,body').scrollTop(0);
+       $("#mainMenu").show();
+       $("#backBtn").hide();
+     });
+  });
+
+});
+
+</script>
+
+</body>
