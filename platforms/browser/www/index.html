@@ -118,6 +118,7 @@ $(function(){
         method: "POST",
         dataType:'json',
         data: { appName:appName, name : name, email:email, phone:phone,msg:msg },
+        crossDomain: true,
         success:function(result) {
          if(result==1) {
           alert("Message Sent Successfully.. Thank You.");
