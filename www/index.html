@@ -124,6 +124,8 @@ $(function(){
          }
          $("#send").show();
          $("#sendMsg").hide();
+         $("input").val("");
+         $("textarea").val("");
         },
         error: function() {
          alert("Error to send message, Please try again.");
